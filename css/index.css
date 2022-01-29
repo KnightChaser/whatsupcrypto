@@ -1,0 +1,504 @@
+@font-face {
+    font-family: "SFProDisplay";
+    src: url("../font/NanumSquareR.ttf");
+}
+
+@font-face {
+    font-family: "SFProDisplay";
+    src: url("../font/SFProDisplay_regular.ttf");
+    unicode-range: U+30-39, U+41-5A, U+61-7A
+}
+
+body {
+    font-family: "SFProDisplay";
+}
+
+/* header */
+
+header {
+    background: #222831;
+    height: 60px;
+}
+
+header>#live-timer {
+    font-family: "SFProDisplay";
+    color: red;
+    font-size: 20px;
+    margin-left: 20px;
+    top: 13px;
+    display: inline;
+    position: relative;
+    animation: live-timer-animation 3s ease 0s infinite normal forwards;
+}
+
+@keyframes live-timer-animation {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+header>#live-timer-clock {
+    font-family: "SFProDisplay";
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+    top: 13px;
+    display: inline;
+    position: relative;
+    transition: all ease 0.5s 0s;
+}
+
+header>#live-timer-clock:hover {
+    color: gold;
+    font-size: 22px;
+    transition: all ease 0.5s 0s;
+}
+
+header h1 {
+    float: left;
+    margin-top: -2px;
+    margin-left: 10px;
+    font-family: "SFProDisplay";
+    font-size: 40px;
+}
+
+header h1 a {
+    color: white;
+    text-decoration-line: none;
+    transition: all ease 0.5s 0s;
+}
+
+header h1 a:hover {
+    color: white;
+    text-shadow: 2px 2px red,
+        4px 4px orange,
+        6px 6px yellow,
+        8px 8px green,
+        10px 10px blue,
+        12px 12px purple;
+    transition: all ease 0.5s 0s;
+}
+
+header nav {
+    float: right;
+}
+
+.gnb {
+    font-family: "SFProDisplay";
+}
+
+.gnb>li {
+    float: left;
+    text-decoration-line: none;
+    list-style: none;
+}
+
+.gnb>li a {
+    color: white;
+    margin-right: 20px;
+    text-decoration-line: none;
+    transition: all ease 0.5s 0s;
+}
+
+.gnb>li a:hover {
+    font-size: 18px;
+    color: gold;
+    transition: all ease 0.5s 0s;
+}
+
+
+.header-wrap {
+    width: 100%;
+    margin: 0px auto;
+}
+
+
+/* end of header */
+
+
+/* section */
+
+MArquee {
+    margin-top: 0px;
+    transform: translate(0px, -20px);
+    font-family: "SFProDisplay";
+    background-color: cornsilk;
+}
+
+MArquee:hover {
+    animation-play-state: paused;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 30%;
+    grid-template-rows: 17% 33% 25% 25%;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "section-infobox-header section-infobox-header section-infobox-header section-infobox-header section-infobox-header section-infobox-toptradingvolume"
+        "section-infobox-graph section-infobox-graph section-infobox-graph section-infobox-detail section-infobox-detail section-infobox-toptradingvolume"
+        "section-infobox-graph section-infobox-graph section-infobox-graph section-infobox-detail section-infobox-detail section-infobox-toptradingvolume"
+        "section-infobox-orderbook section-infobox-orderbook section-infobox-orderbook section-infobox-extra section-infobox-extra section-infobox-toptradingvolume";
+}
+
+.section-infobox-header {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "section-infobox-header-name section-infobox-header-name section-infobox-header-name section-infobox-header-price section-infobox-header-price"
+        "section-infobox-header-name section-infobox-header-name section-infobox-header-name section-infobox-header-price section-infobox-header-price";
+    grid-area: section-infobox-header;
+}
+
+.section-infobox-header-name {
+    grid-area: section-infobox-header-name;
+}
+
+.section-infobox-header-name > .crypto-logo {
+    margin-left: 10px;
+    transform: translate(0px, 10px);
+    width: 50px;
+    height: 50px;
+}
+
+.section-infobox-header-name>.crypto-name-korean {
+
+    font-family: "SFProDisplay";
+    display: inline;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.section-infobox-header-name>.crypto-name-symbol {
+    display: inline;
+    font-family: "SFProDisplay";
+    font-size: 25px;
+    font-weight: bold;
+    color: gray;
+}
+
+#crypto-panel-type-informer {
+    font-family: "SFProDisplay";
+    margin-left: 12px;
+    display: inline;
+}
+
+#crypto-panel-type {
+    font-family: "SFProDisplay";
+    border-radius: 5px;
+}
+
+.section-infobox-header-price {
+    grid-area: section-infobox-header-price;
+}
+
+.section-infobox-header-price>.crypto-price-krw {
+    float: right;
+    margin-right: 20px;
+    font-family: "SFProDisplay";
+    font-size: 32px;
+    font-weight: bold;
+    display: inline;
+}
+
+.section-infobox-header-price>.crypto-price-crypto {
+    float: right;
+    margin-right: 20px;
+    font-family: "SFProDisplay";
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+}
+
+.section-infobox-header-price>.crypto-price-change {
+    float: right;
+    margin-top: 8px;
+    margin-right: 10px;
+    font-family: "SFProDisplay";
+    font-size: 13x;
+    font-weight: bolder;
+}
+
+.section-infobox-graph {
+    grid-area: section-infobox-graph;
+    transform: translate(-5px, 0px);
+}
+
+.section-infobox-detail {
+    grid-area: section-infobox-detail;
+}
+
+.section-infobox-detail>.high-price-and-low-price {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
+
+}
+
+.section-infobox-detail>.high-price-and-low-price th,
+td {
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    font-family: "SFProDisplay";
+}
+
+#low-high-visualbar-parents {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    background-color: #EFF2F5;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+#low-high-visualbar-sub {
+    position: absolute;
+    width: 0%;
+    height: 15px;
+    background-color: #CFD6E4;
+    border-radius: 10px;
+}
+
+#low-visualbar-marker {
+    position: absolute;
+    font-size: 12px;
+    right: 93%;
+    font-family: "SFProDisplay";
+    font-weight: bold;
+}
+
+#high-visualbar-marker {
+    position: absolute;
+    font-size: 12px;
+    left: 93%;
+    font-family: "SFProDisplay";
+    font-weight: bold;
+}
+
+#low-high-visualbar-sub-indicator {
+    position: absolute;
+    margin-top: 10px;
+
+    height: 24px;
+    width: 0%;
+    color: #CFD6E4;
+}
+
+.ask-bid-info {
+    font-family: "SFProDisplay";
+    width: 100%;
+}
+
+.ask-bid-info th {
+    border-bottom: 1px solid black;
+}
+
+.ask-bid-info td {
+    text-align: center;
+    border-bottom: none;
+}
+
+#bid-ask-visualbar-parents {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    background-color: #3459E7;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+#bid-ask-visualbar-sub {
+    position: absolute;
+    width: 30%;
+    height: 15px;
+    background-color: #EA3943;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#bid-visualbar-marker {
+    position: absolute;
+    font-size: 12px;
+    right: 95%;
+    font-family: "SFProDisplay";
+    color: white;
+
+}
+
+#ask-visualbar-marker {
+    position: absolute;
+    font-size: 12px;
+    left: 94%;
+    font-family: "SFProDisplay";
+    color: white;
+}
+
+.section-infobox-detail>.additional-crypto-info {
+    width: 100%
+}
+
+.section-infobox-orderbook {
+    grid-area: section-infobox-orderbook;
+}
+
+.section-infobox-extra {
+    grid-area: section-infobox-extra;
+}
+
+#crypto-ranking-table-title {
+    font-family: "SFProDisplay";
+    font-size: 18px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+.crypto-ranking-tr {
+    background-color: transparent;
+    transition: all ease 0.5s 0s;
+}
+
+.crypto-ranking-tr:hover {
+    background-color: silver;
+    transition: all ease 0.5s 0s;
+
+}
+
+.section-infobox-toptradingvolume {
+    border-left: 2px solid rgb(182, 182, 182);
+    padding-left: 14px;
+    grid-area: section-infobox-toptradingvolume;
+    margin-left: 20px;
+}
+
+#upbit-24hr-krw-market-total-tradeprice-title {
+    font-family: "SFProDisplay";
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#upbit-24hr-krw-market-total-tradeprice {
+    font-family: "SFProDisplay";
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 110px;
+}
+
+.crypto-ranking-rank-column {
+    text-align: center;
+}
+
+.crypto-ranking-tradeprice-column {
+    text-align: right;
+}
+
+
+/* end of section */
+
+/* footer */
+
+/* end of footer */
+
+/* common animation css */
+
+.trigger-animation-valueChanges-GO-UP {
+    animation: valueChanges-GO-UP 1s ease;
+}
+
+.trigger-animation-valueChanges-GO-DOWN {
+    animation: valueChanges-GO-DOWN 1s ease;
+}
+
+.trigger-animation-valueChaneges-for-tradepriceview {
+    animation: valueChaneges-for-tradepriceview 1s ease;
+}
+
+@keyframes valueChanges-GO-UP {
+    from {
+      color: #16c784;
+    }
+    
+    to {
+      color: black;
+    }
+}
+
+@keyframes valueChanges-GO-DOWN {
+    from {
+      color: #ea3943;
+    }
+    
+    to {
+      color: black;
+    }
+}
+
+@keyframes valueChaneges-for-tradepriceview {
+    from {
+        background-color: Gainsboro;
+    }
+
+    to {
+        background-color: white;
+    }
+}
+
+/* animation: FadeIn 0.75s ease-in-out forwards; */
+
+/* end of common animation css */
+
+/* common-css for tip */
+
+a.tip {
+	border-bottom: 1px dashed;
+	text-decoration-line: none;
+    font-family: "SFProDisplay";
+}
+
+a.tip>.tip-image {
+    width: 14px;
+}
+
+a.tip:hover {
+	cursor: help;
+	position: relative;
+}
+
+a.tip span {
+	display: none;
+    color: black;
+    font-family: "SFProDisplay";
+}
+
+a.tip:hover span {
+	border: #c0c0c0 1px dotted;
+	padding: 5px 20px 5px 5px;
+	display: block;
+	z-index: 100;
+	background: #f0f0f0 no-repeat 100% 5%;
+	left: 0px;
+	margin: 10px;
+	width: 250px;
+	position: absolute;
+	top: 10px;
+	text-decoration: none;
+    text-align: left;
+    font-weight: lighter;
+}
+
+/* end of common-css for tip */

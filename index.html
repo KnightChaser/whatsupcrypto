@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon/coin.png">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <script type="text/javascript" src="./js/getCryptoInfo.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+
+    <title>What's Up Crypto?</title>
+</head>
+
+<body>
+
+    <header class="header-wrap">
+        <h1><a href="./index.html">WHAT'S UP CRYPTO?</a></h1>
+        <h3 id="live-timer">● LIVE</h3>
+        <h3 id="live-timer-clock">AA:BB:CC</h3>
+
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="https://upbit.com/exchange" target="_blank">UPBIT</a>
+                </li>
+                <li>
+                    <a href="https://coinpaprika.com/" target="_blank">Coinpaprika</a>
+                </li>
+                <li>
+                    <a href="https://www.tradingview.com/" target="_blank">TradingView</a>
+                </li>
+                <li>
+                    <a href="http://lumes.kr" target="_blank">LUMES.KR로 돌아가기</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+
+        <MArquee id="crypto-marquee" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="15">
+            Ready to set up the marquee...
+        </MArquee>
+
+        <div class="container">
+            <div class="section-infobox-header">
+                <div class="section-infobox-header-name">
+                    <img class="crypto-logo" id="crypto-logo" src="./images/BTC.svg" alt="#">
+                    <div class="crypto-name-korean" id="crypto-name-korean">Ready...</div>
+                    <div class="crypto-name-symbol" id="crypto-name-symbol">Ready...</div>
+                    <br>
+                    <span id="crypto-panel-type-informer">💵 다른 종목 확인하기 → </span>
+                    <select id="crypto-panel-type" value="KRW-BTC" name="crypto-panel-type"
+                        onchange="changeTradingViewChart(this)" style="width:200px;">
+                        <!-- 종목을 더 추가하고 싶으면 로고 이미지랑 getDetailedInformationForMajors() 에서의 
+                            query 코드를 더 입력할 것! -->
+                        <option value="KRW-1INCH">1INCH (1인치네트워크)</option>
+                        <option value="KRW-ADA">ADA (에이다)</option>
+                        <option value="KRW-ALGO">ALGO (알고랜드)</option>
+                        <option value="KRW-ATOM">ATOM (코스모스)</option>
+                        <option value="KRW-AXS">AXS (엑시인피니티)</option>
+                        <option value="KRW-BAT">BAT (베이직어텐션토큰)</option>
+                        <option value="KRW-BCH">BCH (비트코인캐시)</option>
+                        <option value="KRW-BORA">BORA (보라)</option>
+                        <option value="KRW-BSV">BSV (비트코인에스브이)</option>
+                        <option value="KRW-BTC">BTC (비트코인)</option>
+                        <option value="KRW-BTG">BTG (비트코인골드)</option>
+                        <option value="KRW-BTT">BTT (비트토렌트)</option>
+                        <option value="KRW-DOGE">DOGE (도지코인)</option>
+                        <option value="KRW-DOT">DOT (폴카닷)</option>
+                        <option value="KRW-ELF">ELF (엘프)</option>
+                        <option value="KRW-EOS">EOS (이오스)</option>
+                        <option value="KRW-ETC">ETC (이더리움클래식)</option>
+                        <option value="KRW-ETH">ETH (이더리움)</option>
+                        <option value="KRW-IOTA">IOTA (아이오타)</option>
+                        <option value="KRW-KNC">KNC (카이버네트워크)</option>
+                        <option value="KRW-LINK">LINK (체인링크)</option>
+                        <option value="KRW-LTC">LTC (라이트코인)</option>
+                        <option value="KRW-MANA">MANA (디센트럴랜드)</option>
+                        <option value="KRW-MATIC">MATIC (폴리곤)</option>
+                        <option value="KRW-NEAR">NEAR (니어프로토콜)</option>
+                        <option value="KRW-ONG">ONG (온톨로지가스)</option>
+                        <option value="KRW-PLA">PLA (플레이댑)</option>
+                        <option value="KRW-POWR">POWR (파워렛저)</option>
+                        <option value="KRW-SAND">SAND (샌드박스)</option>
+                        <option value="KRW-SOL">SOL (솔라나)</option>
+                        <option value="KRW-STEEM">STEEM (스팀)</option>
+                        <option value="KRW-THETA">THETA (쎄타토큰)</option>
+                        <option value="KRW-VET">VET (비체인)</option>
+                        <option value="KRW-TRX">TRX (트론)</option>
+                        <option value="KRW-QTUM">QTUM (퀀텀)</option>
+                        <option value="KRW-WAVES">WAVES (웨이브)</option>
+                        <option value="KRW-WEMIX">WEMIX (위믹스)</option>
+                        <option value="KRW-XEC">XEC (이캐시)</option>
+                        <option value="KRW-XEM">XEM (넴)</option>
+                        <option value="KRW-XLM">XLM (스텔라루멘)</option>
+                        <option value="KRW-XRP">XRP (리플)</option>
+                        <option value="KRW-ZRX">ZRX (제로엑스)</option>
+                    </select>
+                    <a href="#" class="tip">
+                        <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                        <span>
+                            보고 싶은 암호화폐 종류를 선택하시면 페이지가 자동으로 바뀝니다.<br>
+                            추가되었으면 하는 암호화폐가 더 있으시다면 개발자에게 이메일로 해당 내용을 알려주시면 검토 후 응답(시정)드리겠습니다.
+                        </span>
+                    </a>
+                </div>
+                <div class="section-infobox-header-price">
+                    <div id="crypto-price-change" class="crypto-price-change">Ready...</div>
+                    <div id="crypto-price-krw" class="crypto-price-krw">0</div>
+                    <div id="crypto-price-crypto" class="crypto-price-crypto">Ready...</div>
+                </div>
+            </div>
+            <div class="section-infobox-graph">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div id="tradingview-graph"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                        new TradingView.widget({
+                            "width": 650,
+                            "height": 500,
+                            "symbol": "UPBIT:1INCHKRW",
+                            "interval": "15",
+                            "timezone": "Asia/Seoul",
+                            "theme": "light",
+                            "style": "1",
+                            "locale": "kr",
+                            "toolbar_bg": "#f1f3f6",
+                            "enable_publishing": false,
+                            "hide_top_toolbar": false,
+                            "hide_legend": false,
+                            "save_image": false,
+                            "container_id": "tradingview-graph"
+                        });
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+            <div class="section-infobox-detail">
+
+                <table class="high-price-and-low-price">
+                    <thead>
+                        <tr>
+                            <th>저가</th>
+                            <th>고가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="crypto-price-low-24hr" style="color: blue;">Ready...</td>
+                            <td id="crypto-price-high-24hr" style="color: red">Ready...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="low-high-visualbar-parents">
+                    <div id="low-high-visualbar-sub"></div>
+                    <div id="low-visualbar-marker">LOW</div>
+                    <div id="high-visualbar-marker">HIGH</div>
+                    <svg id="low-high-visualbar-sub-indicator" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        height="24px" width="24px" viewBox="0 0 24 24">
+                        <path
+                            d="M18.0566 16H5.94336C5.10459 16 4.68455 14.9782 5.27763 14.3806L11.3343 8.27783C11.7019 7.90739 12.2981 7.90739 12.6657 8.27783L18.7223 14.3806C19.3155 14.9782 18.8954 16 18.0566 16Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <br>
+
+                <table class="additional-crypto-info">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; width: 30%;">업비트 거래량
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        UPBIT 거래소에서 최근 24시간동안 해당 암호화폐로 거래된 양을 암호화폐 단위로 환산한 값입니다.
+                                    </span>
+                                </a>
+                                <br>전세계 거래량
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        전세계에서 최근 24시간동안 해당 암호화폐로 거래된 양을 암호화폐 단위로 환산한 값입니다.
+                                        가격이 너무 낮거나 거래량(유동성)이 풍부하지 못한 경우에는 정보가 부정확할 수 있습니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-trade-volume-24h" style="text-align: right;">READY...</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">업비트 거래대금
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        UPBIT 거래소에서 최근 24시간동안 해당 암호화폐로 거래된 양을 한화(KRW, 한국 원) 단위로 환산한 값입니다.
+                                    </span>
+                                </a>
+                                <br>전세계 거래대금
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        전세계에서 최근 24시간동안 해당 암호화폐로 거래된 양을 한화(KRW, 한국 원) 단위로 환산한 값입니다.
+                                        가격이 너무 낮거나 거래량(유동성)이 풍부하지 못한 경우에는 정보가 부정확할 수 있습니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-trade-price-24h" style="text-align: right;">READY...</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">시가총액 순위
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        암호화폐의 총 가치인 시가총액을 일렬로 세웠을 때의 등수입니다. Coinpaprika에서 정보를 제공합니다.
+                                        시가총액이나 암호화폐의 가치가 너무 낮은 경우 열외로 판단, 등수가 제공되지 않을 수 있습니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-market-cap-ranking" style="text-align: right;">READY...</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">시가총액
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        현재 세계적으로 공급되는 양의 암호화폐의 개수와 암호화폐의 개당 가치를 곱한 값입니다.
+                                        암호화폐 특성상 시세가 매우 가변적인 특성상 시가총액은 크게 바뀔 수 있습니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-market-cap" style="text-align: right;">READY...</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">현재 공급량
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        현재까지 전세계적으로 발행된(=유통되고 있는) 암호화폐 개수를 말합니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-current-supply" style="text-align: right;">READY...</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">총 공급량
+                                <a href="#" class="tip">
+                                    <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                                    <span>
+                                        암호화폐가 발행될 개수의 최대치입니다.
+                                        많은 암호화폐들은 총 공급량을 정하고 각자의 알고리즘에 따라
+                                        암호화폐의 시간당 발행량을 조절하고 총 공급량을 제한하여
+                                        희소성을 부여, 가치 하락 등을 방어하기도 합니다.
+                                        그러나 총 공급량이 아직 미정이거나 정하지 않는(무한대) 암호화폐도 많습니다.
+                                    </span>
+                                </a>
+                            </td>
+                            <td id="crypto-max-supply" style="text-align: right;">READY...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+                <table class="ask-bid-info">
+                    <thead>
+                        <tr>
+                            <th>매수세 | BID</th>
+                            <th>매도세 | ASK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="crypto-bid">READY...<br>READY...</td>
+                            <td id="crypto-ask">READY...<br>READY...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="bid-ask-visualbar-parents">
+                    <div id="bid-ask-visualbar-sub"></div>
+                    <div id="bid-visualbar-marker">BID</div>
+                    <div id="ask-visualbar-marker">ASK</div>
+                </div>
+
+            </div>
+            <!-- 몰라.. 안 쓸거야! -->
+            <!-- <div class="section-infobox-orderbook"></div> -->
+            <!-- <div class="section-infobox-extra"></div> -->
+            <div class="section-infobox-toptradingvolume">
+                <table id="crypto-ranking-table">
+                    <thead>
+                        <tr>
+                            <th id="crypto-ranking-table-title" colspan="3">🔥UPBIT 거래량 TOP (24hr)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-1" id="crypto-ranking-rank-column-1">#1</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-1-name">name1</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-1-tradeprice">info1</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-2" id="crypto-ranking-rank-column-2">#2</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-2-name">name2</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-2-tradeprice">info2</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-3" id="crypto-ranking-rank-column-3">#3</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-3-name">name3</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-3-tradeprice">info3</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-4" id="crypto-ranking-rank-column-4">#4</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-4-name">name4</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-4-tradeprice">info4</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-5" id="crypto-ranking-rank-column-5">#5</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-5-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-5-tradeprice">info5</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-6" id="crypto-ranking-rank-column-6">#6</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-6-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-6-tradeprice">info5</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-7" id="crypto-ranking-rank-column-7">#7</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-7-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-7-tradeprice">info5</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-8" id="crypto-ranking-rank-column-8">#8</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-8-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-8-tradeprice">info5</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-9" id="crypto-ranking-rank-column-9">#9</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-9-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-9-tradeprice">info5</td>
+                        </tr>
+                        <tr class="crypto-ranking-tr">
+                            <td class="crypto-ranking-rank-column-10" id="crypto-ranking-rank-column-10">#10</td>
+                            <td class="crypto-ranking-name-column" id="crypto-ranking-10-name">name5</td>
+                            <td class="crypto-ranking-tradeprice-column" id="crypto-ranking-10-tradeprice">info5</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <span id="upbit-24hr-krw-market-total-tradeprice-title">UPBIT KRW 마켓 거래량
+                    <a href="#" class="tip">
+                        <img class="tip-image" src="./images/images-for-webpage/help.png" alt="[?]">
+                        <span>
+                            업비트에 상장된 KRW 마켓의 모든 암호화폐의 거래량을 합한 값입니다.
+                        </span>
+                    </a>
+                </span><br>
+                <div id="upbit-24hr-krw-market-total-tradeprice">Ready...</div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
