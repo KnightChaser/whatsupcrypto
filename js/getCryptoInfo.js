@@ -151,7 +151,14 @@ async function getDetailedInformationForMajors(marketCode) {
         "KRW-WAVES": "waves-waves",
         "KRW-WEMIX": "wemix-wemix-token",
         "KRW-POWR": "powr-power-ledger",
-        "KRW-MANA": "mana-decentraland"
+        "KRW-MANA": "mana-decentraland",
+        "KRW-STRK": "strk-strike",
+        "KRW-HUNT": "hunt-hunt",
+        "KRW-HIVE": "hive-hive",
+        "KRW-REP": "rep-augur",
+        "KRW-GAS": "gas-gas",
+        "KRW-STPT": "stpt-stpt",
+        "KRW-TON": "ton-tokamak-network"
     }
 
     let APIQueryURL = "https://api.coinpaprika.com/v1/tickers/" + queryCodeTraslation[marketCode] + "?quotes=KRW";
